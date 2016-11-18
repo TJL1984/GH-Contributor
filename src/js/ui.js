@@ -4,12 +4,12 @@
   window.contributor = window.contributor || {};
 
     $('#search')
-      .on('submit', function findRepos(event){
+      .on('submit', function Repos(event){
         event.preventDefault();
 
-        var token = $('.api').val();
+        var token = $('#api-key').val();
           // console.log(token);
-        var query = $('.query').val();
+        var query = $('#query').val();
           // console.log(query);
 
         window.contributor.findRepos(query, token)
@@ -19,15 +19,18 @@
 
           var randomRepo = data.items;
           var randomSelector = randomRepo[ Math.ceil(Math.random() * randomRepo.length) ];
-          var url = randomSelector.repos_url;
+          var url = randomSelector.commits_url;
           var a = window.contributor.getRepos(token, url);
 
-          return a;
+            return a;
         })
-        .fail(function handleSuccess(xhr) {
-          console.log('failure', xhr);
-        });
 
-      });
-
+        .then (function handleSuccess(data) {
+          console.log('Second', data);
+          // var author = data[0].commit.author.name;
+          // console.log(author);
+          // var avatar =
+        }
+      );
+    });
 }());
