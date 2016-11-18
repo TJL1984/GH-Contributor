@@ -10,42 +10,26 @@
    * @param {String} token What the user will use while they search
    * @return {Promise} Will manage randomizing and selecting the contributor
    */
-     function findRepos(text, token) {
+  function findRepos(query, token) {
+    return $.ajax({
+      url: 'https://api.github.com/search/repositories?q=' + query,
+      method: 'GET',
+      dataType: 'json',
+      headers: {
+          Authorization: 'token' + token,
+      }
+    });
+  }
 
-    $.ajax({
-        url: 'https://api.github.com/search/repositories?q=',
-        method: 'GET',
-        dataType: 'json',
-        headers: {
-            Authorization: "token" + token,
-        }
-      })
-
-      .then(function successHandler(data){
-        console.log("Yay!", data);
-      })
-
-      .fail(function failHandler(xhr){
-        console.log("No dice", xhr);
-      });
-
-    }
-
-    /**
-     * @param {[type]} api Handles the
-     * @param {[type]} url Handles the
-     * @param {Promise} finds the contributor's commits.
-     */
-    function getRepos(api, url){
-      return $.ajax({
-        url:url.split("{") [0],
-        method: 'GET',
-        dataType: 'json',
-        headers: {
-          Authorization: "token" + api
-        }
-      });
-    }
-
+  function getRepos(token, url) {
+    return $.ajax({
+      url: url.split('{') [0],
+      method: 'GET',
+      dataType: 'json',
+      headers: {
+        Authorization: 'token' + token
+      }
+    });
+  }
 
 }());
