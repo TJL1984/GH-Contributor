@@ -6,7 +6,7 @@
   window.contributor.getRepos = getRepos;
 
   /**
-   * @param {String} text Will search for repositories
+   * @param {String} query Will search for repositories
    * @param {String} token What the user will use while they search
    * @return {Promise} Will manage randomizing and selecting the contributor
    */
@@ -23,7 +23,7 @@
 
   function getRepos(token, url) {
     return $.ajax({
-      url: url.split('{') [0],
+      url: url.split('') [0],
       method: 'GET',
       dataType: 'json',
       headers: {
