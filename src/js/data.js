@@ -3,6 +3,7 @@
 
   window.contributor = window.contributor || {};
   window.contributor.findRepos = findRepos;
+  window.contributor.getRepos = getRepos;
 
   /**
    * @param {String} text Will search for repositories
@@ -35,7 +36,7 @@
      * @param {[type]} url Handles the
      * @param {Promise} finds the contributor's commits.
      */
-    function findRepos(api, url){
+    function getRepos(api, url){
       return $.ajax({
         url:url.split("{") [0],
         method: 'GET',
